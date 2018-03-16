@@ -18,13 +18,13 @@ end
 
 
 Vagrant.configure(2) do |config|
-  config.vm.define "nfs_storage" do |nfs_storage_config|
-    nfs_storage_config.vm.box = "bento/centos-7.4"
-    nfs_storage_config.vm.hostname = "nfs-storage.local"
+  config.vm.define "samba_storage" do |samba_storage_config|
+    samba_storage_config.vm.box = "bento/centos-7.4"
+    samba_storage_config.vm.hostname = "samba-storage.local"
     # https://www.vagrantup.com/docs/virtualbox/networking.html
-    nfs_storage_config.vm.network "private_network", ip: "10.0.6.10", :netmask => "255.255.255.0", virtualbox__intnet: "intnet2"
+    samba_storage_config.vm.network "private_network", ip: "10.0.4.10", :netmask => "255.255.255.0", virtualbox__intnet: "intnet2"
 
-    nfs_storage_config.vm.provider "virtualbox" do |vb|
+    samba_storage_config.vm.provider "virtualbox" do |vb|
       vb.gui = true
       vb.memory = "1024"
       vb.cpus = 2
@@ -32,23 +32,23 @@ Vagrant.configure(2) do |config|
       vb.name = "centos7_nfs_storage"
     end
 
-    nfs_storage_config.vm.provision "shell", path: "scripts/install-rpms.sh", privileged: true
-    nfs_storage_config.vm.provision "shell", path: "scripts/nfs_server_setup.sh", privileged: true
+    samba_storage_config.vm.provision "shell", path: "scripts/install-rpms.sh", privileged: true
+    samba_storage_config.vm.provision "shell", path: "scripts/nfs_server_setup.sh", privileged: true
   end
 
 
-  config.vm.define "nfs_client" do |nfs_client_config|
-    nfs_client_config.vm.box = "bento/centos-7.4"
-    nfs_client_config.vm.hostname = "nfs-client.local"
-    nfs_client_config.vm.network "private_network", ip: "10.0.6.11", :netmask => "255.255.255.0", virtualbox__intnet: "intnet2"
+  config.vm.define "samba_client" do |samba_client_config|
+    samba_client_config.vm.box = "bento/centos-7.4"
+    samba_client_config.vm.hostname = "samba-client.local"
+    samba_client_config.vm.network "private_network", ip: "10.0.6.11", :netmask => "255.255.255.0", virtualbox__intnet: "intnet2"
 
-    nfs_client_config.vm.provider "virtualbox" do |vb|
+    samba_client_config.vm.provider "virtualbox" do |vb|
       vb.gui = true
       vb.memory = "1024"
       vb.cpus = 2
-      vb.name = "centos7_nfs_client"
+      vb.name = "centos7_samba_client"
     end
 
-    nfs_client_config.vm.provision "shell", path: "scripts/install-rpms.sh", privileged: true
+    samba_client_config.vm.provision "shell", path: "scripts/install-rpms.sh", privileged: true
   end
 end

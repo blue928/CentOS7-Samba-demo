@@ -3,12 +3,11 @@
 set -ex
 
 echo '##########################################################################'
-echo '############### About to run nfs_client_setup.sh script ##################'
+echo '############### About to run samba_client_setup.sh script ##################'
 echo '##########################################################################'
 
 
 mkdir -p /mnt/backups
-mkdir -p /mnt/ref_data
 
 
 
