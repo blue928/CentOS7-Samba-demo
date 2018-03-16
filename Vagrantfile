@@ -29,11 +29,11 @@ Vagrant.configure(2) do |config|
       vb.memory = "1024"
       vb.cpus = 2
       vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
-      vb.name = "centos7_nfs_storage"
+      vb.name = "centos7_samba_storage"
     end
 
     samba_storage_config.vm.provision "shell", path: "scripts/install-rpms.sh", privileged: true
-    samba_storage_config.vm.provision "shell", path: "scripts/nfs_server_setup.sh", privileged: true
+    samba_storage_config.vm.provision "shell", path: "scripts/samba_server_setup.sh", privileged: true
   end
 
 
