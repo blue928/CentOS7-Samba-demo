@@ -40,7 +40,7 @@ Vagrant.configure(2) do |config|
   config.vm.define "samba_client" do |samba_client_config|
     samba_client_config.vm.box = "bento/centos-7.4"
     samba_client_config.vm.hostname = "samba-client.local"
-    samba_client_config.vm.network "private_network", ip: "10.0.6.11", :netmask => "255.255.255.0", virtualbox__intnet: "intnet2"
+    samba_client_config.vm.network "private_network", ip: "10.0.4.11", :netmask => "255.255.255.0", virtualbox__intnet: "intnet2"
 
     samba_client_config.vm.provider "virtualbox" do |vb|
       vb.gui = true
