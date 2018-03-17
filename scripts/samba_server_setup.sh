@@ -19,6 +19,9 @@ semanage fcontext -at samba_share_t "/samba/export_rw(/.*)?"
 
 restorecon -R /samba/export_rw
 
+groupadd --gid 2000 sambagroup
+chown nobody:sambagroup /samba/export_rw
+chown nobody:sambagroup /samba/export_rw
 
 firewall-cmd --permanent --add-service=samba
 systemctl restart firewalld
@@ -27,6 +30,9 @@ systemctl restart firewalld
 /bin/cp -f /vagrant/files/smb.conf /etc/samba/smb.conf
 
 useradd samba_user1
+usermod -aG sambagroup samba_user1
+usermod -aG sambagroup root
+
 
 smbpasswd -a samba_user1 <<EOF
 password123

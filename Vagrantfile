@@ -50,6 +50,7 @@ Vagrant.configure(2) do |config|
     end
 
     samba_client_config.vm.provision "shell", path: "scripts/install-rpms.sh", privileged: true
+    samba_client_config.vm.provision "shell", path: "scripts/samba_server_setup.sh", privileged: true
   end
 
   config.vm.provision :hosts do |provisioner|
