@@ -51,4 +51,10 @@ Vagrant.configure(2) do |config|
 
     samba_client_config.vm.provision "shell", path: "scripts/install-rpms.sh", privileged: true
   end
+
+  config.vm.provision :hosts do |provisioner|
+    provisioner.add_host '10.0.4.10', ['samba-storage.local']
+    provisioner.add_host '10.0.4.11', ['samba-client.local']
+  end
+
 end
