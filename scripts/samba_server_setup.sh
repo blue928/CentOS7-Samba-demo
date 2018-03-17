@@ -21,7 +21,7 @@ restorecon -R /samba/export_rw
 
 groupadd --gid 2000 sambagroup
 chown nobody:sambagroup /samba/export_rw
-chown nobody:sambagroup /samba/export_rw
+chmod g+rwx /samba/export_rw
 
 firewall-cmd --permanent --add-service=samba
 systemctl restart firewalld
