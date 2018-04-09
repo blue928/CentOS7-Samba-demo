@@ -22,3 +22,5 @@ usermod -aG sambagroup root
 
 echo '//samba-storage.local/bckp_storage /mnt/backups  cifs  username=samba_user1,password=password123,soft,rw  0 0' >> /etc/fstab
 mount -a
+
+exit 0
