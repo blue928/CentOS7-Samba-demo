@@ -27,7 +27,7 @@ firewall-cmd --permanent --add-service=samba
 systemctl restart firewalld
 
 # this is to avoid an alias. 
-cp /etc/samba/smb.conf /etc/samba/smb.conf-orig
+mv /etc/samba/smb.conf /etc/samba/smb.conf-orig
 /bin/cp -f /vagrant/files/smb.conf /etc/samba/smb.conf
 
 useradd samba_user1
