@@ -19,7 +19,7 @@ end
 
 Vagrant.configure(2) do |config|
   config.vm.define "samba_storage" do |samba_storage_config|
-    samba_storage_config.vm.box = "bento/centos-7.4"
+    samba_storage_config.vm.box = "bento/centos-7.5"
     samba_storage_config.vm.hostname = "samba-storage.local"
     # https://www.vagrantup.com/docs/virtualbox/networking.html
     samba_storage_config.vm.network "private_network", ip: "10.0.4.10", :netmask => "255.255.255.0", virtualbox__intnet: "intnet2"
@@ -38,7 +38,7 @@ Vagrant.configure(2) do |config|
 
 
   config.vm.define "samba_client" do |samba_client_config|
-    samba_client_config.vm.box = "bento/centos-7.4"
+    samba_client_config.vm.box = "bento/centos-7.5"
     samba_client_config.vm.hostname = "samba-client.local"
     samba_client_config.vm.network "private_network", ip: "10.0.4.11", :netmask => "255.255.255.0", virtualbox__intnet: "intnet2"
 
